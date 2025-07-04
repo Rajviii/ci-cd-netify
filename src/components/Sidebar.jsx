@@ -33,7 +33,7 @@ const Sidebar = () => {
         } md:translate-x-0 transition-transform duration-300 z-40`}
       >
         <div className="p-6 text-xl font-semibold border-b border-gray-200">
-          Sidebar
+          Facil-IT
         </div>
 
         <nav className="flex flex-col p-4 space-y-4">

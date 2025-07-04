@@ -1,4 +1,3 @@
-// src/components/CustomMap.jsx
 import { useState } from 'react';
 import {
   GoogleMap,

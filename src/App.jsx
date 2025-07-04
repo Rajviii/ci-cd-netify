@@ -21,37 +21,43 @@ function App() {
       id: 1,
       name: 'A.G. Home',
       lat: 27.6648,
-      lng: -81.5158
+      lng: -81.5158,
+      status: 'done',
     },
     {
       id: 2,
       name: 'M.B. Home',
       lat: 17.4989,
-      lng: 79.0766
+      lng: 79.0766,
+      status: 'done',
     },
     {
       id: 3,
       name: 'R.B. Home',
       lat: 17.4989,
-      lng: 79.0770
+      lng: 79.0770,
+      status: 'done',
     },
     {
       id: 4,
       name: 'F.G. Home',
       lat: 27.6648,
-      lng: -81.5161
+      lng: -81.5161,
+      status: 'done',
     },
     {
       id: 5,
       name: 'J.G. Home',
       lat: 27.6648,
-      lng: -81.5168
+      lng: -81.5168,
+      status: 'done',
     },
     {
       id: 6,
       name: 'Our Home',
       lat: 23.5880,
-      lng: 72.3693
+      lng: 72.3693,
+      status: 'done',
     },
   ]
   console.log('selected', selected);
@@ -98,6 +104,7 @@ function App() {
               >
                 <div>
                   <h4>{selected.name}</h4>
+                  <h5>{selected.status}</h5>
                 </div>
               </InfoWindow>
             )}

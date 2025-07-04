@@ -65,7 +65,7 @@ function App() {
   return (
     <>
       <LoadScript googleMapsApiKey="AIzaSyCw6x2h8yP1cKm_EaxUacX4PKyFsXW_tdU">
-
+        <div className='text-red-500 bg-black'>Rajvi</div>
         <div>
           <button onClick={() => setMapType('roadmap')}>Map View</button>
           <button onClick={() => setMapType('satellite')}>Satellite</button>

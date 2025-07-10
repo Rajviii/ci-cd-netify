@@ -28,7 +28,7 @@ export default function PageLayout({ children }) {
             </div>
           </div>
         )}
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-4">
+        <main className="flex-1 overflow-y-auto bg-white-50 p-4">
           {children}
         </main>
       </div>

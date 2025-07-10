@@ -16,8 +16,8 @@ export default function Tabs({ tabs, onTabChange }) {
           onClick={() => handleTabClick(tab)}
           className={`pb-2 ${
             activeTab === tab
-              ? "border-b-2 border-indigo-500 text-black-600"
-              : "text-gray-600 hover:text-blue-500"
+              ? "border-b-2 border-blue-500 text-black-600 font-bold"
+              : "text-gray-600 hover:text-blue-500 cursor-pointer"
           }`}
         >
           {tab}

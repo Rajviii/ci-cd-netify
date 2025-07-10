@@ -1,10 +1,25 @@
-import { useState } from "react";
-import { FiMoreVertical, FiEdit2, FiTrash2 } from "react-icons/fi";
+import { useState, useEffect, useRef } from "react";
+import { FiMoreVertical, FiEdit2, FiTrash2, FiMoreHorizontal } from "react-icons/fi";
 import { HiChevronUpDown } from "react-icons/hi2";
+import StatusChip from "./StatusChip";
 
 export default function DataTable({ columns, data }) {
   const [sortConfig, setSortConfig] = useState(null);
   const [showActionMenu, setShowActionMenu] = useState(null);
+  const actionMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        actionMenuRef.current &&
+        !actionMenuRef.current.contains(event.target)
+      ) {
+        setShowActionMenu(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const sortedData = [...data].sort((a, b) => {
     if (!sortConfig) return 0;
@@ -57,19 +72,23 @@ export default function DataTable({ columns, data }) {
               <input type="checkbox" />
             </td>
             {columns.map((col) => (
-              <td key={col.key} className="p-3 text-gray-800">
-                {row[col.key]}
+              <td key={col.key} className="px-4 py-2 text-sm text-black-800">
+                {col.key === "status" ? (
+                  <StatusChip status={row[col.key]} />
+                ) : (
+                  row[col.key]
+                )}
               </td>
             ))}
-            <td className="p-3 relative">
+            <td className="p-3 relative" ref={rowIndex === showActionMenu ? actionMenuRef : null}>
               <button
                 onClick={() => toggleActionMenu(rowIndex)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 cursor-pointer"
               >
-                <FiMoreVertical />
+                <FiMoreHorizontal />
               </button>
               {showActionMenu === rowIndex && (
-                <div className="absolute right-3 mt-1 w-28 bg-white border border-gray-200 rounded shadow-md z-10">
+                <div className="absolute top-8 right-0 w-28 bg-white border border-gray-200 rounded shadow-md z-10">
                   <button
                     className="w-full px-3 py-2 text-left text-sm hover:bg-gray-100 flex items-center gap-2"
                     onClick={() => alert(`Edit: ${row.id}`)}

@@ -5,7 +5,7 @@ import {
   MdPeopleOutline,
   MdAssessment,
   MdKeyboardArrowDown,
-  MdKeyboardArrowRight,
+  MdKeyboardArrowUp,
 } from "react-icons/md";
 
 const sidebarMenus = [
@@ -43,40 +43,46 @@ export default function Sidebar() {
 
   return (
     <aside className="w-64 bg-white border-r border-gray-200 shadow-sm h-full overflow-y-auto">
-      <nav className="p-4 space-y-2">
-        {sidebarMenus.map((menu, index) => (
-          <div key={index}>
-            <button
-              onClick={() => toggleMenu(menu.title)}
-              className="w-full flex items-center justify-between py-2 px-3 text-left hover:bg-gray-100 rounded-md"
-            >
-              <div className="flex items-center gap-3 text-gray-800">
-                <span className="text-xl">{menu.icon}</span>
-                <span className="font-medium">{menu.title}</span>
-              </div>
+      <nav className="p-4 space-y-1">
+        {sidebarMenus.map((menu, index) => {
+          const isOpen = openMenus[menu.title];
+          const hasSubItems = menu.subItems.length > 0;
 
-              {menu.subItems.length > 0 &&
-                (openMenus[menu.title] ? (
-                  <MdKeyboardArrowDown className="text-gray-500" />
-                ) : (
-                  <MdKeyboardArrowRight className="text-gray-500" />
-                ))}
-            </button>
+          return (
+            <div key={index} className={`rounded-md ${isOpen ? "bg-gray-50" : ""}`}>
+              <button
+                onClick={() => toggleMenu(menu.title)}
+                className="w-full flex items-center justify-between py-3 px-3 text-left hover:bg-gray-100 rounded-md"
+              >
+                <div className="flex items-center gap-3 text-gray-800">
+                  <span className="text-xl">{menu.icon}</span>
+                  <span className="font-medium">{menu.title}</span>
+                </div>
 
-            {openMenus[menu.title] && menu.subItems.length > 0 && (
-              <div className="mt-1">
-                {menu.subItems.map((sub, idx) => (
-                  <div
-                    key={idx}
-                    className="pl-12 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-100 hover:text-blue-600 cursor-pointer rounded-md transition"
-                  >
-                    {sub}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
+                {hasSubItems &&
+                  (isOpen ? (
+                    <MdKeyboardArrowDown className="text-gray-500 cursor-pointer" />
+                  ) : (
+                    <MdKeyboardArrowUp className="text-gray-500 cursor-pointer" />
+                  ))}
+              </button>
+
+              {isOpen && hasSubItems && (
+                <div className="pl-4 pr-4 py-2 space-y-1">
+                  {menu.subItems.map((sub, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-3 text-m text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md px-2 py-1 cursor-pointer transition"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+                      <span>{sub}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </nav>
     </aside>
   );

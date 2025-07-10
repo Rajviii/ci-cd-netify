@@ -9,10 +9,9 @@ export default function ExportSettingsBar() {
 
   return (
     <div className="flex items-center gap-3">
-      {/* Export Dropdown */}
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <MenuButton className="inline-flex items-center justify-center gap-1.5 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-900 shadow-xs ring-1 ring-gray-300 hover:bg-gray-50">
+          <MenuButton className="inline-flex items-center justify-center gap-1.5 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-900 shadow-xs ring-1 ring-gray-300 hover:bg-gray-50 cursor-pointer">
             Export
             <ChevronDownIcon className="-mr-1 h-4 w-4 text-gray-400" aria-hidden="true" />
           </MenuButton>
@@ -27,7 +26,7 @@ export default function ExportSettingsBar() {
                     onClick={() => handleExport(type.toLowerCase())}
                     className={`${
                       active ? "bg-gray-100 text-gray-900" : "text-gray-700"
-                    } block w-full text-left px-4 py-2 text-sm`}
+                    } block w-full text-left px-4 py-2 text-sm  cursor-pointer`}
                   >
                     {type}
                   </button>
@@ -38,9 +37,8 @@ export default function ExportSettingsBar() {
         </MenuItems>
       </Menu>
 
-      {/* Settings Button */}
       <button
-        className="border border-gray-300 p-2 rounded-md hover:bg-gray-100 transition text-black-600"
+        className="border border-gray-300 p-2 rounded-md hover:bg-gray-100 transition text-black-600 cursor-pointer"
         title="Settings"
         onClick={() => console.log("Settings clicked")}
       >

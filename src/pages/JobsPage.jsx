@@ -1,5 +1,5 @@
 import DynamicPageLayout from "../components/layout/DynamicPageLayout";
-import { jobsTableData, jobsColumns, jobsTabs } from "../data/JobsData";
+import { jobsTableData, jobsColumns, jobsTabs, jobsFilters } from "../data/JobsData";
 
 export default function JobsPage() {
   return (
@@ -7,6 +7,7 @@ export default function JobsPage() {
       tabs={jobsTabs}
       columns={jobsColumns}
       data={jobsTableData}
+      filtersConfig={jobsFilters}
       type="table"
     />
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { FiMoreVertical, FiEdit2, FiTrash2, FiMoreHorizontal } from "react-icons/fi";
+import { FiEdit2, FiTrash2, FiMoreHorizontal } from "react-icons/fi";
 import { HiChevronUpDown } from "react-icons/hi2";
 import StatusChip from "./StatusChip";
 

@@ -4,7 +4,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 export default function Pagination({
     currentPage = 1,
-    totalItems = 633,
+    totalItems = 100,
     itemsPerPage = 10,
     onPageChange = () => { },
     onPerPageChange = () => { },

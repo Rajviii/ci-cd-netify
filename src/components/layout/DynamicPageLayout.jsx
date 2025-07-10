@@ -7,7 +7,7 @@ import DataTable from "../common/DataTable";
 import Pagination from "../common/Pagination";
 import { useState } from "react";
 
-export default function DynamicPageLayout({ tabs, columns, data, type }) {
+export default function DynamicPageLayout({ tabs, columns, data, type, filtersConfig = [] }) {
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -38,7 +38,7 @@ export default function DynamicPageLayout({ tabs, columns, data, type }) {
 
             {/* Filters + Export */}
             <div className="flex justify-between items-center flex-wrap gap-4">
-                <FilterBar />
+                <FilterBar filtersConfig={filtersConfig}/>
                 <ExportSettingsBar />
             </div>
 

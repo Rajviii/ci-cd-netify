@@ -6,31 +6,31 @@ import {
     MenuItems,
 } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { FiPlus } from "react-icons/fi";
 import CustomPlusButton from "./CustomPlusButton";
 
-const availableFilters = [
-    { label: "Status", options: ["All", "Open", "Closed", "Pending"] },
-    { label: "Priority", options: ["All", "High", "Medium", "Low"] },
-    { label: "Assigned To", options: ["All", "John", "Jane", "Team A"] },
-];
-
-export default function FilterBar() {
-    const [filters, setFilters] = useState([availableFilters[0]]);
-    const [selectedValues, setSelectedValues] = useState({
-        Status: "All",
-        Priority: "All",
-        "Assigned To": "All",
+export default function FilterBar({ filtersConfig = {} }) {
+    const filtersArray = Object.entries(filtersConfig).map(([label, options]) => ({
+        label,
+        options,
+    }));
+    const [selectedValues, setSelectedValues] = useState(() => {
+        return filtersArray.reduce((acc, f) => {
+            acc[f.label] = "All";
+            return acc;
+        }, {});
     });
+    const [filters, setFilters] = useState([filtersArray[0]]);
 
     const addFilter = () => {
-        const remaining = availableFilters.filter(
-            (af) => !filters.find((f) => f.label === af.label)
+        const remaining = filtersArray.filter(
+            (fa) => !filters.find((f) => f.label === fa.label)
         );
+
         if (remaining.length > 0) {
             setFilters((prev) => [...prev, remaining[0]]);
         }
     };
+
 
     const handleFilterChange = (label, value) => {
         setSelectedValues((prev) => ({
@@ -42,15 +42,12 @@ export default function FilterBar() {
 
     return (
         <div className="flex items-center gap-4 flex-wrap">
-            {filters.map((filter, idx) => (
+            {filtersArray.map((filter, idx) => (
                 <Menu as="div" className="relative inline-block text-left" key={idx}>
                     <div>
                         <MenuButton className="inline-flex items-center justify-center gap-1.5 rounded-md bg-white px-3 py-2 text-sm font-medium text-gray-900 shadow-xs ring-1 ring-gray-300 hover:bg-gray-50 cursor-pointer">
                             {filter.label}: {selectedValues[filter.label] || "All"}
-                            <ChevronDownIcon
-                                className="-mr-1 h-4 w-4 text-gray-400"
-                                aria-hidden="true"
-                            />
+                            <ChevronDownIcon className="-mr-1 h-4 w-4 text-gray-400" aria-hidden="true" />
                         </MenuButton>
                     </div>
 
@@ -61,8 +58,7 @@ export default function FilterBar() {
                                     {({ active }) => (
                                         <button
                                             onClick={() => handleFilterChange(filter.label, option)}
-                                            className={`${active ? "bg-gray-100 text-gray-900" : "text-gray-700"
-                                                } block w-full text-left px-4 py-2 text-sm cursor-pointer`}
+                                            className={`${active ? "bg-gray-100 text-gray-900" : "text-gray-700"} block w-full text-left px-4 py-2 text-sm cursor-pointer`}
                                         >
                                             {option}
                                         </button>
@@ -74,14 +70,14 @@ export default function FilterBar() {
                 </Menu>
             ))}
 
-            {/* {filters.length < availableFilters.length && ( */}
+            {filters.length < filtersArray.length && (
                 <CustomPlusButton
                     text="Filter"
                     textColor="text-blue-500"
                     bgColor="bg-gray-200"
                     onClick={addFilter}
                 />
-            {/* )} */}
+            )}
         </div>
     );
 }

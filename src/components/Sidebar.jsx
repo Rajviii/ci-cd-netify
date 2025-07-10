@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 const sidebarData = [
-  { label: 'Dashboard', path: '/dashboard' },
+  { label: 'Dashboard', path: '/' },
   { label: 'Work Order', path: '/work-order' },
   { label: 'Project', path: '/project' },
   { label: 'Settings', path: '/settings' },

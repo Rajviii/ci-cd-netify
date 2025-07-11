@@ -1,8 +1,8 @@
 
-import SectionFilterBar from "../SectionFilterBar";
-import SectionTabs from "../SectionTabs";
-import ActivityCard from "./ActivityCard";
+import SectionFilterBar from "../filters/SectionFilterBar";
+import SectionTabs from "../tabs/SectionTabs";
 import { HiOutlineRefresh } from "react-icons/hi";
+import ActivityCard from "./ActivityCard";
 
 export default function CardListSection({ title, tabs, selectedTab, onTabChange, filters, onFilterChange, onRefresh, data }) {
   return (

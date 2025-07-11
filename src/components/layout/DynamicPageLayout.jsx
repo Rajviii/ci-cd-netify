@@ -3,7 +3,7 @@ import SearchBar from "../common/filters/SearchBar";
 import ActionButtons from "../common/buttons/ActionButtons";
 import FilterBar from "../common/filters/FilterBar";
 import ExportSettingsBar from "../common/ExportSettingsBar";
-import DataTable from "../common/DataTable";
+import DataTable from "../common/table/DataTable";
 import Pagination from "../common/table/Pagination";
 import { useState } from "react";
 

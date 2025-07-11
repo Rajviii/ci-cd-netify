@@ -1,15 +1,22 @@
+import { Routes, Route, Navigate } from "react-router-dom";
 import PageLayout from "./components/layout/PageLayout";
 import JobsPage from "./pages/JobsPage";
+import ActivitiesPage from "./pages/ActivitiesPage";
 
 function App() {
   return (
     <PageLayout>
-      <JobsPage />
+      <Routes>
+        <Route path="/" element={<Navigate to="/jobs" />} />
+        <Route path="/jobs" element={<JobsPage />} />
+        <Route path="/activities" element={<ActivitiesPage />} />
+      </Routes>
     </PageLayout>
   );
 }
 
 export default App;
+
 
 
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom"

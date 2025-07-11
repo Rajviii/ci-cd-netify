@@ -1,10 +1,10 @@
-import Tabs from "../common/Tabs";
-import SearchBar from "../common/SearchBar";
-import ActionButtons from "../common/ActionButtons";
-import FilterBar from "../common/FilterBar";
+import Tabs from "../common/tabs/Tabs";
+import SearchBar from "../common/filters/SearchBar";
+import ActionButtons from "../common/buttons/ActionButtons";
+import FilterBar from "../common/filters/FilterBar";
 import ExportSettingsBar from "../common/ExportSettingsBar";
 import DataTable from "../common/DataTable";
-import Pagination from "../common/Pagination";
+import Pagination from "../common/table/Pagination";
 import { useState } from "react";
 
 export default function DynamicPageLayout({

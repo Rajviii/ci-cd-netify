@@ -1,5 +1,5 @@
-import PriorityChip from "../PriorityChip";
-import StatusChip from "../StatusChip";
+import PriorityChip from "../chips/PriorityChip";
+import StatusChip from "../chips/StatusChip";
 
 
 export default function ActivityCard({ activity }) {

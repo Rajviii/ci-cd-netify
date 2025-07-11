@@ -6,7 +6,7 @@ import {
     MenuItems,
 } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import CustomPlusButton from "./CustomPlusButton";
+import CustomPlusButton from "../buttons/CustomPlusButton";
 
 export default function FilterBar({ filtersConfig = {} }) {
     const filtersArray = Object.entries(filtersConfig).map(([label, options]) => ({

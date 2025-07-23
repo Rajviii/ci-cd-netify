@@ -8,7 +8,7 @@ export default function WorkOrder() {
   const [viewMode, setViewMode] = useState('table');
 
   return (
-    <Layout>
+    <>
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Work Orders</h1>
         <div className="space-x-3">
@@ -108,6 +108,6 @@ export default function WorkOrder() {
           </table>
         </div>
       )}
-    </Layout>
+      </>
   );
 }

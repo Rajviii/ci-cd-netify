@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import PageLayout from "./components/layout/PageLayout";
 import JobsPage from "./pages/JobsPage";
 import ActivitiesPage from "./pages/ActivitiesPage";
+import WorkOrder from "./pages/WorkOrder/WorkOrder";
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
         <Route path="/" element={<Navigate to="/jobs" />} />
         <Route path="/jobs" element={<JobsPage />} />
         <Route path="/activities" element={<ActivitiesPage />} />
+
+        <Route path="/work-order" element={<WorkOrder />} />
       </Routes>
     </PageLayout>
   );

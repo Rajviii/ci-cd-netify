@@ -22,6 +22,7 @@ const sidebarMenus = [
     icon: <MdWorkOutline />,
     subItems: [
       { label: "All Jobs", path: "/jobs" },
+      { label: "Work Order", path: "/work-order" },
       { label: "Inspections", path: "/inspections" },
       { label: "Audits", path: "/audits" },
       { label: "Projects", path: "/projects" },
